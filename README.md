@@ -35,16 +35,24 @@ source /opt/deepops/env/bin/activate
 ansible-playbook -K --forks=1 --connection=local -l slurm-cluster playbooks/slurm-cluster.yml
 ```
 
+**NO GPU INstall**
+```
+source /opt/deepops/env/bin/activate
+ansible-playbook -K --forks=1 --connection=local -l slurm-cluster -e '{"slurm_autodetect_nvml": false, "slurm_login_on_compute": false}' playbooks/slurm-cluster.yml
+```
+
+
 ### Setup docker for slurm
 ```
 source /opt/deepops/env/bin/activate
 ansible-playbook -K  --forks=1 --connection=local --limit slurm-cluster playbooks/container/docker-rootless.yml
 ```
 
-## Errors
-### Resolve GPG Key Error
-https://developer.nvidia.com/blog/updating-the-cuda-linux-gpg-repository-key/
+## Test
+See: https://github.com/NVIDIA/deepops/blob/23.08/docs/slurm-cluster/slurm-single-node.md
+
+### Grafana Dash
 ```
-sudo apt-key del 7fa2af80
-wget -O /tmp/cuda-keyring_1.0-1_all.deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
-sudo dpkg -i /tmp/cuda-keyring_1.0-1_all.deb
+curl http://localhost:3000
+```
+
