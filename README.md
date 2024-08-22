@@ -1,5 +1,22 @@
 # Install Slurm - Single node
 
+## References
+ - https://github.com/NVIDIA/deepops
+    - Deprecated recently, but still the best single-node SLURM deployment for DGX.
+
+## Data Collection
+ - [] Define users/groups that should have access?
+ - [] Should users be able to submit jobs w/out slurm?
+ - [] What user should be the admin user? needs sudo
+ - [] Slurm Queue, any preferences?
+ - [] Container integration any idea what you want?
+    - [] Rootless Docker (single node)
+    - [] Singularity (multi node)
+    - [] Enroot (multi node)
+ - [] Tests
+    - [] Perform Nvidia prescribed tests
+    - [] Any custom tests?
+
 ## Start
 
 Clone deepops
